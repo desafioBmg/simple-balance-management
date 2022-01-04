@@ -1,0 +1,113 @@
+{
+	"info": {
+		"_postman_id": "401f4c18-1e57-48f6-b8bd-e335439f5ac5",
+		"name": "BalanceManagement",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"accountName\":\"Account3\",\r\n    \"balance\":3000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4001/add",
+					"host": [
+						"localhost"
+					],
+					"port": "4001",
+					"path": [
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetBy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		},
+		{
+			"name": "GetAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateOperation",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"operation\":\"credit\",\r\n    \"value\":13\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4001/update-operation/credit",
+					"host": [
+						"localhost"
+					],
+					"port": "4001",
+					"path": [
+						"update-operation",
+						"credit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetByDates",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"initial_date\": \"2022-01-03T18:59:00+00:00\",\r\n    \"final_date\": \"2022-01-03T19:00:00+00:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4001/get-by-dates/Account2",
+					"host": [
+						"localhost"
+					],
+					"port": "4001",
+					"path": [
+						"get-by-dates",
+						"Account2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
