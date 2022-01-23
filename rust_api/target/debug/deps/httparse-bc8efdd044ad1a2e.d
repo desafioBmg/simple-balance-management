@@ -1,0 +1,12 @@
+/home/cmbergamo/desafio/rust_api/target/debug/deps/httparse-bc8efdd044ad1a2e.rmeta: /home/cmbergamo/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.5.1/src/lib.rs /home/cmbergamo/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.5.1/src/iter.rs /home/cmbergamo/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.5.1/src/macros.rs /home/cmbergamo/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.5.1/src/simd/mod.rs /home/cmbergamo/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.5.1/src/simd/sse42.rs /home/cmbergamo/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.5.1/src/simd/avx2.rs
+
+/home/cmbergamo/desafio/rust_api/target/debug/deps/libhttparse-bc8efdd044ad1a2e.rlib: /home/cmbergamo/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.5.1/src/lib.rs /home/cmbergamo/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.5.1/src/iter.rs /home/cmbergamo/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.5.1/src/macros.rs /home/cmbergamo/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.5.1/src/simd/mod.rs /home/cmbergamo/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.5.1/src/simd/sse42.rs /home/cmbergamo/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.5.1/src/simd/avx2.rs
+
+/home/cmbergamo/desafio/rust_api/target/debug/deps/httparse-bc8efdd044ad1a2e.d: /home/cmbergamo/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.5.1/src/lib.rs /home/cmbergamo/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.5.1/src/iter.rs /home/cmbergamo/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.5.1/src/macros.rs /home/cmbergamo/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.5.1/src/simd/mod.rs /home/cmbergamo/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.5.1/src/simd/sse42.rs /home/cmbergamo/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.5.1/src/simd/avx2.rs
+
+/home/cmbergamo/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.5.1/src/lib.rs:
+/home/cmbergamo/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.5.1/src/iter.rs:
+/home/cmbergamo/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.5.1/src/macros.rs:
+/home/cmbergamo/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.5.1/src/simd/mod.rs:
+/home/cmbergamo/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.5.1/src/simd/sse42.rs:
+/home/cmbergamo/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.5.1/src/simd/avx2.rs:
