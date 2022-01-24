@@ -103,23 +103,23 @@ async fn abrir_conta( bd : Data<Pool<Postgres>>, req : HttpRequest, usuario: Jso
 }
 
 #[put("/{id}")]
-async fn saldo( bd : Data<Pool<Postgres>>, req : HttpRequest, usuario: Path<String> ) -> impl Responder {
+async fn saldo( bd : Data<Pool<Postgres>>, usuario: Path<String> ) -> impl Responder {
 
-	let user =
+	let user = usuario.as_ref().clone();
 
-	println!("Chegou!!! {:?}", usuario.as_ref());
+	println!("Chegou!!! {:?}", user.as_str());:wq:
 
 	// TODO fazer o tratamento de erro para algum problema de comunicação com o BD
 	let saldo : (f64, ) = sqlx::query_as("SELECT saldo FROM usuario WHERE id = $1" )
 		.bind( usuario.into_inner() )
 		.fetch_one( bd.get_ref() ).await
-		.expect(format!( "Erro ao consultar o saldo do usuario {}", usuario.as_ref() ).as_str() );
+		.expect(format!( "Erro ao consultar o saldo do usuario {}", user.as_str() ).as_str() );
 
 	let mut resp = HttpResponse::Ok()
 		.insert_header(ContentType::json() )
 		.body( format!( "{{ \"status\" : \"ok\", \"saldo\" : {} }}", saldo.0 ) );
 
-	resp.add_cookie( &Cookie::new("user", usuario.as_ref() ) );
+	let _ = resp.add_cookie( &Cookie::new("user", user.as_str() ) );
 
 	resp
 }
