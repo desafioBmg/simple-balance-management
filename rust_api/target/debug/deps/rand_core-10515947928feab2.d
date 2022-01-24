@@ -1,0 +1,12 @@
+E:\trabalho\bmg\desafio\rust_api\target\debug\deps\rand_core-10515947928feab2.rmeta: C:\Users\cmber\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.6.3\src\lib.rs C:\Users\cmber\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.6.3\src\block.rs C:\Users\cmber\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.6.3\src\error.rs C:\Users\cmber\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.6.3\src\impls.rs C:\Users\cmber\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.6.3\src\le.rs C:\Users\cmber\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.6.3\src\os.rs
+
+E:\trabalho\bmg\desafio\rust_api\target\debug\deps\librand_core-10515947928feab2.rlib: C:\Users\cmber\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.6.3\src\lib.rs C:\Users\cmber\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.6.3\src\block.rs C:\Users\cmber\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.6.3\src\error.rs C:\Users\cmber\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.6.3\src\impls.rs C:\Users\cmber\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.6.3\src\le.rs C:\Users\cmber\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.6.3\src\os.rs
+
+E:\trabalho\bmg\desafio\rust_api\target\debug\deps\rand_core-10515947928feab2.d: C:\Users\cmber\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.6.3\src\lib.rs C:\Users\cmber\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.6.3\src\block.rs C:\Users\cmber\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.6.3\src\error.rs C:\Users\cmber\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.6.3\src\impls.rs C:\Users\cmber\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.6.3\src\le.rs C:\Users\cmber\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.6.3\src\os.rs
+
+C:\Users\cmber\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.6.3\src\lib.rs:
+C:\Users\cmber\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.6.3\src\block.rs:
+C:\Users\cmber\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.6.3\src\error.rs:
+C:\Users\cmber\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.6.3\src\impls.rs:
+C:\Users\cmber\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.6.3\src\le.rs:
+C:\Users\cmber\.cargo\registry\src\github.com-1ecc6299db9ec823\rand_core-0.6.3\src\os.rs:
