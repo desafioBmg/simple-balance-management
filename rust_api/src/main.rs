@@ -1,17 +1,22 @@
 mod cad_usuario;
+mod transacao;
 
-use actix_web::{get, put, App, HttpServer, Responder, HttpResponse, HttpRequest};
+use actix_web::{get, post, App, HttpServer, Responder, HttpResponse, HttpRequest};
 use actix_web::web::{Data, Json, Path};
 use actix_web::http::header::ContentType;
+use actix_web::cookie::Cookie;
 
 use sqlx::{Pool, Postgres};
 use sqlx::postgres::PgPoolOptions;
+use sqlx::types::Uuid;
 
 use anyhow::Result;
 
 use cad_usuario::CadUsuario;
-use sqlx::types::Uuid;
-use actix_web::cookie::Cookie;
+use crate::transacao::Transacao::{CreditoDebito, Transferencia};
+use crate::transacao::{Transacao, Transf};
+use crate::transacao::CreDeb;
+use chrono::{Local, SecondsFormat};
 
 #[tokio::main]
 async fn main() -> Result<()> {
@@ -31,7 +36,7 @@ async fn main() -> Result<()> {
 			.service(teste )
 			.service( status )
 			.service( abrir_conta )
-			.service( saldo )
+			.service( balanco )
 	} ).bind("0.0.0.0:7777")?
 		.run()
 		.await;
@@ -56,8 +61,8 @@ async fn hello() -> impl Responder {
 	HttpResponse::Ok().body("Hello world!")
 }
 
-#[put("/abrirConta")]
-async fn abrir_conta( bd : Data<Pool<Postgres>>, req : HttpRequest, usuario: Json<CadUsuario> ) -> impl Responder {
+#[post("/abrirConta")]
+async fn abrir_conta( bd : Data<Pool<Postgres>>, usuario: Json<CadUsuario> ) -> impl Responder {
 
 	println!("Chegou!!! {:?}", usuario.0);
 
@@ -87,7 +92,7 @@ async fn abrir_conta( bd : Data<Pool<Postgres>>, req : HttpRequest, usuario: Jso
 	// TODO consultar a chave do cliente e criar uma tabela com o nome da chave para armazenar as transações
 	sqlx::query(format!("CREATE TABLE public.\"{}_T\" (
 	horario int8 NOT NULL,
-	conta_origem uuid NOT NULL,
+	conta uuid,
 	valor numeric NOT NULL
 )", chave.0 ).as_str() )
 		.execute(bd.get_ref() ).await
@@ -102,28 +107,101 @@ async fn abrir_conta( bd : Data<Pool<Postgres>>, req : HttpRequest, usuario: Jso
 	resp
 }
 
-#[put("/{id}")]
-async fn saldo( bd : Data<Pool<Postgres>>, usuario: Path<String> ) -> impl Responder {
+#[get("/{id}")]
+async fn balanco( bd : Data<Pool<Postgres>>, usuario: Path<String> ) -> actix_web::Result<impl Responder> {
 
 	let user = usuario.as_ref().clone();
 
-	println!("Chegou!!! {:?}", user.as_str());:wq:
+	println!("Chegou!!! {:?}", user.as_str());
 
 	// TODO fazer o tratamento de erro para algum problema de comunicação com o BD
-	let saldo : (f64, ) = sqlx::query_as("SELECT saldo FROM usuario WHERE id = $1" )
-		.bind( usuario.into_inner() )
+	let saldos : (i64, ) = sqlx::query_as("SELECT saldo FROM usuario WHERE agencia = $1" )
+		.bind( user.as_str())
 		.fetch_one( bd.get_ref() ).await
-		.expect(format!( "Erro ao consultar o saldo do usuario {}", user.as_str() ).as_str() );
+		.expect(format!( "Erro ao consultar o saldo do usuario {}", user.as_str() ).as_str());
 
 	let mut resp = HttpResponse::Ok()
 		.insert_header(ContentType::json() )
-		.body( format!( "{{ \"status\" : \"ok\", \"saldo\" : {} }}", saldo.0 ) );
+		.body( format!( "{{ \"status\" : \"ok\", \"saldo\" : {} }}", saldos.0 ) );
 
 	let _ = resp.add_cookie( &Cookie::new("user", user.as_str() ) );
 
-	resp
+	Ok( resp )
 }
 
-async fn manual_hello() -> impl Responder {
-	HttpResponse::Ok().body("Hey there!")
+#[post("/credito")]
+async fn transacoes(bd : Data<Pool<Postgres>>, req : HttpRequest, transacao: Json<Transacao> ) -> impl Responder {
+
+	match transacao.0 {
+		CreditoDebito(op ) => {
+			if valida_saldo(bd.get_ref().clone(), op.user.as_str(), op.valor ).await {
+				(op.user, op.valor);
+			}
+
+		},
+		Transferencia( op ) => {
+			if valida_saldo(bd.get_ref().clone(), op.origem.as_str(), op.valor * -1.0 ).await {
+				(op.origem, op.valor);
+			}
+
+		}
+	}
+
+	// TODO Gerar a mensagem de confirmação da transação;
+	HttpResponse::Ok()
+}
+
+async fn valida_saldo(bd : Pool<Postgres>, usuario : &str, valor : f64 ) -> bool {
+
+	let saldo : (f64, ) = sqlx::query_as("SELECT saldo FROM usuario WHERE id = $1" )
+		.bind( usuario)
+		.fetch_one( &bd ).await
+		.expect("Erro ao definiro número da conta");
+
+	if valor > 0.0 || ( saldo.0 + valor ) >= 0f64 {
+		return true;
+	}
+
+	false
+}
+
+async fn atualiza_saldo(bd : &Pool<Postgres>, op : &CreDeb ) {
+	sqlx::query("UPDATE usuario SET  saldo = (saldo + $1) WHERE id = $2" )
+		.bind( op.valor)
+		.bind( op.user.as_str() )
+		.execute( &*bd ).await
+		.expect( "Erro ao atualizar o saldo da transação." );
+}
+
+async fn transacao_basica(bd : &Pool<Postgres>, op : CreDeb ) {
+	atualiza_saldo( &bd, &op).await;
+
+	sqlx::query("INSERT INTO $1 ( horario, valor ) values ( $2, $3 )" )
+		.bind( op.valor)
+		.bind( op.user.as_str() )
+		.execute( &*bd ).await
+		.expect( "Erro ao atualizar o saldo da transação." );
+}
+
+async fn transacao_transferencia( bd : &Pool<Postgres>, tempo : &str, conta1 : &str, conta2 : &str, valor : f64 ) {
+	let mut tabela = format!("\"{}_T\"", conta1);
+
+	sqlx::query("INSERT INTO $1 ( horario, valor, conta ) values ( $2, $3, $4 )" )
+		.bind( tabela.as_str() )
+		.bind( tempo )
+		.bind( valor )
+		.bind( conta2 )
+		.execute( &*bd ).await
+		.expect( "Erro ao atualizar o saldo da transação." );
+}
+
+async fn transferencia(   bd : Pool<Postgres>, op : Transf) {
+	atualiza_saldo(&bd, &CreDeb{ user : op.origem.clone(), valor : (op.valor * -1.0 ) }).await;
+	atualiza_saldo(&bd, &CreDeb{ user : op.destino.clone(), valor : op.valor }).await;
+
+	let tempo = Local::now()
+		.to_rfc3339_opts(SecondsFormat::Secs, false);
+
+	transacao_transferencia( &bd, tempo.as_str(), op.origem.as_str(), op.destino.as_str(), op.valor * -1.0 ).await;
+	transacao_transferencia( &bd, tempo.as_str(), op.destino.as_str(), op.origem.as_str(), op.valor ).await;
 }
