@@ -3,7 +3,10 @@
 We need a simple balance management system. In this challenge you will have to deliver a service with the following features:
 
 ## Requisitos
+<<<<<<< HEAD
 
+=======
+>>>>>>> 08a1244439108b21934c554d5aaf2bdd856e2776
 ### Feitos
 ```
 - Credit the balance
