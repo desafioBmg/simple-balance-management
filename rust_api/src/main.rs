@@ -91,7 +91,7 @@ async fn abrir_conta( bd : Data<Pool<Postgres>>, usuario: Json<CadUsuario> ) -> 
 
 	// TODO consultar a chave do cliente e criar uma tabela com o nome da chave para armazenar as transações
 	sqlx::query(format!("CREATE TABLE public.\"{}_T\" (
-	horario int8 NOT NULL,
+	horario :: NOT NULL,
 	conta uuid,
 	valor numeric NOT NULL
 )", chave.0 ).as_str() )
@@ -204,4 +204,9 @@ async fn transferencia(   bd : Pool<Postgres>, op : Transf) {
 
 	transacao_transferencia( &bd, tempo.as_str(), op.origem.as_str(), op.destino.as_str(), op.valor * -1.0 ).await;
 	transacao_transferencia( &bd, tempo.as_str(), op.destino.as_str(), op.origem.as_str(), op.valor ).await;
+}
+
+#[get("/extrato/{id}")]
+async fn extrato() {
+
 }
