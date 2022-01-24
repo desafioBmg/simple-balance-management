@@ -1,0 +1,11 @@
+E:\trabalho\bmg\desafio\rust_api\target\debug\deps\unicode_segmentation-ecacc17664d9b62e.rmeta: C:\Users\cmber\.cargo\registry\src\github.com-1ecc6299db9ec823\unicode-segmentation-1.8.0\src\lib.rs C:\Users\cmber\.cargo\registry\src\github.com-1ecc6299db9ec823\unicode-segmentation-1.8.0\src\grapheme.rs C:\Users\cmber\.cargo\registry\src\github.com-1ecc6299db9ec823\unicode-segmentation-1.8.0\src\tables.rs C:\Users\cmber\.cargo\registry\src\github.com-1ecc6299db9ec823\unicode-segmentation-1.8.0\src\word.rs C:\Users\cmber\.cargo\registry\src\github.com-1ecc6299db9ec823\unicode-segmentation-1.8.0\src\sentence.rs
+
+E:\trabalho\bmg\desafio\rust_api\target\debug\deps\libunicode_segmentation-ecacc17664d9b62e.rlib: C:\Users\cmber\.cargo\registry\src\github.com-1ecc6299db9ec823\unicode-segmentation-1.8.0\src\lib.rs C:\Users\cmber\.cargo\registry\src\github.com-1ecc6299db9ec823\unicode-segmentation-1.8.0\src\grapheme.rs C:\Users\cmber\.cargo\registry\src\github.com-1ecc6299db9ec823\unicode-segmentation-1.8.0\src\tables.rs C:\Users\cmber\.cargo\registry\src\github.com-1ecc6299db9ec823\unicode-segmentation-1.8.0\src\word.rs C:\Users\cmber\.cargo\registry\src\github.com-1ecc6299db9ec823\unicode-segmentation-1.8.0\src\sentence.rs
+
+E:\trabalho\bmg\desafio\rust_api\target\debug\deps\unicode_segmentation-ecacc17664d9b62e.d: C:\Users\cmber\.cargo\registry\src\github.com-1ecc6299db9ec823\unicode-segmentation-1.8.0\src\lib.rs C:\Users\cmber\.cargo\registry\src\github.com-1ecc6299db9ec823\unicode-segmentation-1.8.0\src\grapheme.rs C:\Users\cmber\.cargo\registry\src\github.com-1ecc6299db9ec823\unicode-segmentation-1.8.0\src\tables.rs C:\Users\cmber\.cargo\registry\src\github.com-1ecc6299db9ec823\unicode-segmentation-1.8.0\src\word.rs C:\Users\cmber\.cargo\registry\src\github.com-1ecc6299db9ec823\unicode-segmentation-1.8.0\src\sentence.rs
+
+C:\Users\cmber\.cargo\registry\src\github.com-1ecc6299db9ec823\unicode-segmentation-1.8.0\src\lib.rs:
+C:\Users\cmber\.cargo\registry\src\github.com-1ecc6299db9ec823\unicode-segmentation-1.8.0\src\grapheme.rs:
+C:\Users\cmber\.cargo\registry\src\github.com-1ecc6299db9ec823\unicode-segmentation-1.8.0\src\tables.rs:
+C:\Users\cmber\.cargo\registry\src\github.com-1ecc6299db9ec823\unicode-segmentation-1.8.0\src\word.rs:
+C:\Users\cmber\.cargo\registry\src\github.com-1ecc6299db9ec823\unicode-segmentation-1.8.0\src\sentence.rs:
