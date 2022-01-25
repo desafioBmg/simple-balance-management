@@ -1,0 +1,15 @@
+[package]
+name = "rust_api"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+actix-web = "4.0.0-beta.21"
+sqlx = { version = "0.5", features = [ "runtime-tokio-native-tls", "postgres", "uuid" ] }
+anyhow = "1.0.53"
+tokio = { version = "1", features = [ "full"] }
+tokio-compat-02 = "0.2"
+serde = { version = "1", features = [ "derive" ] }
+chrono = "0.4"
