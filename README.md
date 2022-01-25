@@ -9,11 +9,7 @@ We need a simple balance management system. In this challenge you will have to d
 - Credit the balance
 - Debit the balance
 - View current balance
-```
-
-### Faltando
-```
-- View statement by date #faltando
+- View statement by date
 ```
 
 ### Obs
@@ -27,7 +23,7 @@ We need a simple balance management system. In this challenge you will have to d
 ```
 - Rest api in Rust lang
 - Database (of your choice)
-- docker-compose.yml ready to run the project.
+- docker-compose.yml ready to run the project. **Faltando**
 ```
 
 Fork this repo into your github account.
