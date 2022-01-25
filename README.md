@@ -13,12 +13,12 @@ We need a simple balance management system. In this challenge you will have to d
 ```
 
 ### Obs
-```
+
 - O crédido e o débito só diferem no valor da transação
 - Fazer os testes unitários
 - Melhorar os tratamentos de erros
 - O arquivo arc-bmg.arc pode ser importado no programa [ARC](https://install.advancedrestclient.com/install) e utilizado para testes *gratuito
-```
+
 
 ## The service must have:
 ```
